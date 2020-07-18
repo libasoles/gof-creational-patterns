@@ -1,20 +1,52 @@
 package domain;
 
+import domain.exceptions.CannotGoThroughObjectException;
+import domain.exceptions.NotADoorException;
+
 import java.util.HashMap;
 import java.util.Map;
 
-public class Room {
-    Map sides = new HashMap<Direction, MapSite>();
+public class Room implements MapSite {
+    private int number;
+    Map<Direction, MapSite> sides = new HashMap();
 
-    public Room(MapSite northSide, MapSite southSide, MapSite eastSide, MapSite westSide) {
+    public Room() {}
 
-        sides.put(Direction.NORTH, northSide);
-        sides.put(Direction.SOUTH, southSide);
-        sides.put(Direction.EAST, eastSide);
-        sides.put(Direction.WEST, westSide);
+    public Room(int aNumber) {
+        this.number = aNumber;
+    }
+
+    public void setSide(Direction direction, MapSite object) {
+        sides.put(direction, object);
     }
 
     public MapSite getSide(Direction direction) {
-        return (MapSite) sides.get(direction);
+        return sides.get(direction);
+    }
+
+    public void setNumber(int aNumber) {
+        this.number = aNumber;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    @Override
+    public Room enterFrom(Room room) {
+        return this;
+    }
+
+    public Room go(Direction direction) throws CannotGoThroughObjectException {
+        return sides.get(direction).enterFrom(this);
+    }
+
+    public void toggleDoor(Direction direction) throws NotADoorException {
+        try {
+            Door aDoor = ((Door) sides.get(direction));
+            aDoor.toggle();
+        } catch(ClassCastException e) {
+            throw new NotADoorException();
+        }
     }
 }
