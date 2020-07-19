@@ -1,6 +1,7 @@
 package domain;
 
 import domain.exceptions.CannotGoThroughObjectException;
+import domain.interfaces.MapSite;
 
 public class Wall implements MapSite {
     @Override

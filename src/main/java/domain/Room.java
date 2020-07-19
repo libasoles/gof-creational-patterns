@@ -2,6 +2,7 @@ package domain;
 
 import domain.exceptions.CannotGoThroughObjectException;
 import domain.exceptions.NotADoorException;
+import domain.interfaces.MapSite;
 
 import java.util.HashMap;
 import java.util.Map;

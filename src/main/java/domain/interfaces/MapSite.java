@@ -1,5 +1,6 @@
-package domain;
+package domain.interfaces;
 
+import domain.Room;
 import domain.exceptions.CannotGoThroughObjectException;
 
 public interface MapSite {
