@@ -24,3 +24,11 @@ The domain looks something like this.
 I changed the original `enter()` behavior, and called it `enterFrom`. You can try to go through a door or wall, but you always enter into a room. So it returns a room. Also, it receives a room as parameter, so a door can tell where you come from and where you go.
 
 I also added methods like `go`. The book suggests that, but really doesn't focus on those details.
+
+## Patterns examples
+
+### Abstract Factory
+
+Injecting an Abstract Factory provides a way to replace the _look and feel_ of the maze, creating a different family of objects (e.g.: enchanted vs bomb labyrinths)
+
+[Abstract Factory](https://github.com/libasoles/gof-creational-patterns/blob/abstract-factory)
