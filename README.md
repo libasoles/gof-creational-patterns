@@ -16,3 +16,11 @@ A door can be either open or closed. If closed, you snap your nose onto it, as y
 
 There's no need to actually model a player, that's out of scope. 
 
+## UML diagram
+The domain looks something like this.
+
+![UML diagram](https://github.com/libasoles/gof-creational-patterns/blob/master/uml.png)
+
+I changed the original `enter()` behavior, and called it `enterFrom`. You can try to go through a door or wall, but you always enter into a room. So it returns a room. Also, it receives a room as parameter, so a door can tell where you come from and where you go.
+
+I also added methods like `go`. The book suggests that, but really doesn't focus on those details.
