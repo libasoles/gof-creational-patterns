@@ -31,4 +31,4 @@ I also added methods like `go`. The book suggests that, but really doesn't focus
 
 Injecting an Abstract Factory provides a way to replace the _look and feel_ of the maze, creating a different family of objects (e.g.: enchanted vs bomb labyrinths)
 
-[Abstract Factory](https://github.com/libasoles/gof-creational-patterns/blob/abstract-factory)
+See the [Abstract Factory PR](https://github.com/libasoles/gof-creational-patterns/pull/1/files)
