@@ -5,8 +5,8 @@ public class LabyrinthGame {
      * TODO: this hardcoded creation will be replaced with creational design patterns as in the GoF book
      */
     public Labyrinth createLabyrinth() {
-        Room firstRoom = new Room();
-        Room secondRoom = new Room();
+        Room firstRoom = new Room(1);
+        Room secondRoom = new Room(2);
 
         Door aDoor = new Door(firstRoom, secondRoom);
 

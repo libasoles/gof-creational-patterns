@@ -10,8 +10,6 @@ public class Room implements MapSite {
     private int number;
     Map<Direction, MapSite> sides = new HashMap();
 
-    public Room() {}
-
     public Room(int aNumber) {
         this.number = aNumber;
     }
@@ -22,10 +20,6 @@ public class Room implements MapSite {
 
     public MapSite getSide(Direction direction) {
         return sides.get(direction);
-    }
-
-    public void setNumber(int aNumber) {
-        this.number = aNumber;
     }
 
     public int getNumber() {

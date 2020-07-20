@@ -2,18 +2,14 @@ package domain;
 
 import domain.exceptions.RoomNotFoundException;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Labyrinth {
-    private List<Room> rooms = new ArrayList();
+    private Map<Integer, Room> rooms = new HashMap<>();
 
     public void addRoom(Room aRoom) {
-        int aNumber = rooms.size();
-
-        // as we are using a simple ArrayList to store the rooms, and making a basic look-up, that forces us to set the room nª here.
-        aRoom.setNumber(aNumber);
-        rooms.add(aRoom);
+        rooms.put(aRoom.getNumber(), aRoom);
     }
 
     /**
@@ -27,10 +23,8 @@ public class Labyrinth {
      * @throws RoomNotFoundException
      */
     public Room getRoom(int aNumber) throws RoomNotFoundException {
-        try {
-            return rooms.get(aNumber - 1);
-        } catch (IndexOutOfBoundsException e) {
+        if (!rooms.containsKey(aNumber))
             throw new RoomNotFoundException();
-        }
+        return rooms.get(aNumber);
     }
 }

@@ -33,7 +33,7 @@ public class RoomShould {
     }
 
     private void createRoom() {
-        aRoom = new Room();
+        aRoom = new Room(1);
         aRoom.setSide(Direction.NORTH, northSideDoor);
         aRoom.setSide(Direction.SOUTH, southSideWall);
         aRoom.setSide(Direction.EAST, eastSideWall);

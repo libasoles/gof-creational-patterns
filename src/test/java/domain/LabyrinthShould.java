@@ -2,6 +2,7 @@ package domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.mockito.BDDMockito.*;
 
 import domain.exceptions.RoomNotFoundException;
 import org.junit.Test;
@@ -17,6 +18,8 @@ public class LabyrinthShould {
 
     @Test public void
     return_a_room_by_number() throws RoomNotFoundException {
+        given(aRoom.getNumber()).willReturn(1);
+
         Labyrinth labyrinth = new Labyrinth();
         labyrinth.addRoom(aRoom);
 
