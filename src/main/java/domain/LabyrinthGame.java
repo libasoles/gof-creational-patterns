@@ -1,26 +1,35 @@
 package domain;
 
+import factories.LabyrinthFactory;
+
 public class LabyrinthGame {
     /**
-     * TODO: this hardcoded creation will be replaced with creational design patterns as in the GoF book
+     * Recall that the member function createLabyrinth builds a small
+     * Labyrinth consisting of two rooms with a door between them. But createLabyrinth
+     * hard-coded the class names, making it difficult to create Labyrinths with
+     * different components.
+     * Here’s a version of createLabyrinth that remedies that shortcoming by
+     * taking a MazeFactory as a parameter:
+     *
+     * @param factory A concrete theme for the game
      */
-    public Labyrinth createLabyrinth() {
-        Room firstRoom = new Room(1);
-        Room secondRoom = new Room(2);
+    public static Labyrinth createLabyrinth(LabyrinthFactory factory) {
+        Room firstRoom = factory.createRoom(1);
+        Room secondRoom = factory.createRoom(2);
 
-        Door aDoor = new Door(firstRoom, secondRoom);
+        Door aDoor = factory.createDoor(firstRoom, secondRoom);
 
-        firstRoom.setSide(Direction.NORTH, new Wall());
+        firstRoom.setSide(Direction.NORTH, factory.createWall());
         firstRoom.setSide(Direction.SOUTH, aDoor);
-        firstRoom.setSide(Direction.EAST, new Wall());
-        firstRoom.setSide(Direction.WEST, new Wall());
+        firstRoom.setSide(Direction.EAST, factory.createWall());
+        firstRoom.setSide(Direction.WEST, factory.createWall());
 
         secondRoom.setSide(Direction.NORTH, aDoor);
-        secondRoom.setSide(Direction.SOUTH, new Wall());
-        secondRoom.setSide(Direction.EAST, new Wall());
-        secondRoom.setSide(Direction.WEST, new Wall());
+        secondRoom.setSide(Direction.SOUTH, factory.createWall());
+        secondRoom.setSide(Direction.EAST, factory.createWall());
+        secondRoom.setSide(Direction.WEST, factory.createWall());
 
-        Labyrinth labyrinth = new Labyrinth();
+        Labyrinth labyrinth = factory.createLabyrinth();
         labyrinth.addRoom(firstRoom);
         labyrinth.addRoom(secondRoom);
 
